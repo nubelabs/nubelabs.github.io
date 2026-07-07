@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showcase</title>
+    <title>nübeLABS</title>
     <style>
         * {
             box-sizing: border-box;
@@ -33,10 +33,9 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Keeps the aspect ratio. Change to "cover" if you want it to stretch to fill the screen completely */
+            object-fit: contain;
         }
 
-        /* Fade animation */
         .fade {
             animation: fadeEffect 1s;
         }
@@ -98,7 +97,6 @@
             
             slides[slideIndex - 1].style.display = "block";  
             
-            // Changes the image every 3000 milliseconds (3 seconds)
             setTimeout(showSlides, 3000); 
         }
     </script>
