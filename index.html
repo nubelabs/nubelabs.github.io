@@ -3,100 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NubeLabs Showcase</title>
+    <title>Showcase</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+        * {
+            box-sizing: border-box;
+        }
+        
+        body, html {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            background-color: #ffffff;
             width: 100%;
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #111;
-        }
-
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: #666;
-        }
-
-        .container {
-            max-width: 1000px;
-            width: 90%;
-            margin: 3rem 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .screenshot-card {
-            background: #ffffff;
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
+            height: 100%;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            background-color: #000;
         }
 
-        .screenshot-card img {
+        .slideshow-container {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            position: relative;
         }
 
-        .screenshot-card .caption {
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #555;
-            text-align: center;
-            border-top: 1px solid #eaeaea;
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps the aspect ratio. Change to "cover" if you want it to stretch to fill the screen completely */
+        }
+
+        /* Fade animation */
+        .fade {
+            animation: fadeEffect 1s;
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0.4; } 
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>NubeLabs</h1>
-        <p>Welcome to our official project page</p>
-    </header>
-
-    <div class="container">
-        <div class="grid">
-            
-            <div class="screenshot-card">
-                <img src="screenshot1.png" alt="App Screenshot 1">
-                <div class="caption">Main Dashboard View</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="screenshot2.png" alt="App Screenshot 2">
-                <div class="caption">Settings Page</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="screenshot3.png" alt="App Screenshot 3">
-                <div class="caption">User Profile Interface</div>
-            </div>
-
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="screenshot (1).png" alt="Slide 1">
+        </div>
+        <div class="slide fade">
+            <img src="screenshot (2).png" alt="Slide 2">
+        </div>
+        <div class="slide fade">
+            <img src="screenshot (3).png" alt="Slide 3">
         </div>
     </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }    
+            
+            slides[slideIndex - 1].style.display = "block";  
+            
+            // Changes the image every 3000 milliseconds (3 seconds)
+            setTimeout(showSlides, 3000); 
+        }
+    </script>
 
 </body>
 </html>
